@@ -1,10 +1,13 @@
 package com.openclassroom.teste.model;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@DynamicUpdate
 @Table(name = "produit")
 public class Product {
 
@@ -21,9 +24,9 @@ public class Product {
 
     @OneToMany(
 
+            mappedBy = "produits",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER
+            orphanRemoval = true
     )
 
     @JoinColumn(name = "produit_id")
@@ -71,7 +74,10 @@ public class Product {
     // Relation Bidirectionnelle
     @ManyToMany(
             mappedBy = "products",
-            cascade = CascadeType.ALL
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
     )
     List<Categorie> categories = new ArrayList<>();
 

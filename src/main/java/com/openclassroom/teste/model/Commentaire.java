@@ -1,8 +1,11 @@
 package com.openclassroom.teste.model;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
 @Entity
+@DynamicUpdate
 @Table(name= "commentaire")
 public class Commentaire {
 
@@ -14,7 +17,10 @@ public class Commentaire {
 //    @Column(name = "produit_id")
 //    private int product_id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinColumn(name = "produit_id")
 
     private Product product;

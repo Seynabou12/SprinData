@@ -25,4 +25,8 @@ public class CommentaireService {
     public Commentaire addCommentaire(Commentaire commentaire) {
         return commentaireRepository.save(commentaire);
     }
+
+    public void deleteCommentaireById(Integer id){
+        commentaireRepository.deleteById(id);
+    }
 }
