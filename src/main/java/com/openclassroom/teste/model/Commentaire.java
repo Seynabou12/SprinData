@@ -17,12 +17,13 @@ public class Commentaire {
 //    @Column(name = "produit_id")
 //    private int product_id;
 
-    @ManyToOne(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinColumn(name = "produit_id")
-
+    @ManyToOne(
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
+    )
+    @JoinColumn(name="produit_id")
     private Product product;
 
     public int getCommentaire_id() {

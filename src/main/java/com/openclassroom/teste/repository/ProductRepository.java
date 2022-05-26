@@ -1,14 +1,15 @@
 package com.openclassroom.teste.repository;
 
 import com.openclassroom.teste.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    //Utilisation des requétes personnalisées
+    public Iterable<Product> findByName(String nom);
 
-     Iterable<Product> findAByName(String name);
+    public Iterable<Product> findByCategoriesName(String nom);
 
 }

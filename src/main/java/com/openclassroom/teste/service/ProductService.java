@@ -4,6 +4,7 @@ import com.openclassroom.teste.model.Product;
 import com.openclassroom.teste.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class ProductService {
     {
         return  productRepository.findAll();
     }
-    public Optional<Product> getProductById(Integer id)
+    public Optional<Product> getProductById(@PathVariable("id") Integer id)
     {
         return  productRepository.findById(id);
     }
@@ -27,12 +28,17 @@ public class ProductService {
         return productRepository.save(produit);
     }
 
-    public void deleteProduitById(Integer id){
+    public void deleteProduitById(@PathVariable("id") Integer id){
         productRepository.deleteById(id);
     }
 
-    // Ajout dd méthode pour
+     //Ajout dd méthode pour
     public Iterable<Product> getProductsByName(String name){
-        return productRepository.findAByName(name);
+        return productRepository.findByName(name);
+    }
+//    
+    // recupérer les produits en fonction du nom d'une categorie
+    public Iterable<Product> getProductsByCategoryName(String nom){
+        return productRepository.findByCategoriesName(nom);
     }
 }

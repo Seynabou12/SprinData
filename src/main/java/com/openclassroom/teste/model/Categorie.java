@@ -19,7 +19,6 @@ public class Categorie {
     private String nom;
 
     @ManyToMany(
-
             fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
@@ -27,9 +26,9 @@ public class Categorie {
             }
     )
     @JoinTable(
-                name = "categorie_produit",
-                joinColumns = @JoinColumn(name = "categorie_id"),
-                inverseJoinColumns =  @JoinColumn(name = "produit_id")
+            name = "categorie_produit",
+            joinColumns = @JoinColumn(name = "categorie_id"),
+            inverseJoinColumns = @JoinColumn(name = "produit_id")
     )
 
     private List<Product> products = new ArrayList<>();

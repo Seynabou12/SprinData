@@ -16,22 +16,18 @@ public class Product {
     @Column(name = "produit_id")
     private int productId;
     @Column(name = "nom")
-    private String name;
+    private String nom;
     @Column(name = "description")
     private String description;
     @Column(name = "cout")
     private int cost;
 
     @OneToMany(
-
+            mappedBy = "product",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER
+            orphanRemoval = true
     )
-
-    @JoinColumn(name = "produit_id")
-    // Ajout de nouveau attribut
-    private List<Commentaire> commentaires =  new ArrayList<>();
+    List<Commentaire> commentaires = new ArrayList<>();
 
     public int getProductId() {
         return productId;
@@ -41,12 +37,12 @@ public class Product {
         this.productId = productId;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getDescription() {
