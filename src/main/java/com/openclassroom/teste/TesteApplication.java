@@ -56,42 +56,68 @@ public class TesteApplication implements CommandLineRunner {
 
         // Affiche la liste des catégories présent dans la base de donnée
 
-        categorieService.getCategories().forEach(
-                categorie -> System.out.println(categorie.getNom()));
+//        categorieService.getCategories().forEach(
+//                categorie -> System.out.println(categorie.getNom()));
+//
+//        // Instenciation de l'objet Category
+//        Categorie newCategorie = new Categorie();
+//        newCategorie.setNom("promotion");
+//        // Appelle de la méthode addCategorie
+//        newCategorie = categorieService.addCategorie(newCategorie);
+//        // Affichgae de nouveau catégorie
+//        categorieService.getCategories().forEach(
+//                categorie -> System.out.println(categorie.getNom())
+//        );
+ //---------------------------------------------------------------------------------------------------
+//        productService.getProducts().forEach(
+//                product -> System.out.println(product.getName())
+//        );
+        // -----------------------------------------------------------------------------------
 
-        // Instenciation de l'objet Category
-        Categorie newCategorie = new Categorie();
-        newCategorie.setNom("promotion");
-        // Appelle de la méthode addCategorie
-        newCategorie = categorieService.addCategorie(newCategorie);
-        // Affichgae de nouveau catégorie
-        categorieService.getCategories().forEach(
-                categorie -> System.out.println(categorie.getNom())
-        );
+//        Product newProduit = new Product();
+//        newProduit.setName("Créme");
+//        newProduit.setDescription("Description produit");
+//        newProduit.setCost(2000);
+//
+//        newCategorie.addProduct(newProduit);
+//        productService.getProducts().forEach(
+//        product -> System.out.println(product.getName()));
+//        newProduit.getCategories().forEach(
+//                categorie -> System.out.println(categorie.getNom())
+//        );
 
-        productService.getProducts().forEach(
-                product -> System.out.println(product.getName())
-        );
-        Product newProduit = new Product();
-        newProduit.setName("Créme");
-        newProduit.setDescription("Description produit");
-        newProduit.setCost(2000);
-
+        // -----------------------------------------------------------------------------------------------
        //Applelle à la methode ADD
-        newProduit = productService.addProduct(newProduit);
-        productService.getProducts().forEach(
-                product -> System.out.println(product.getName())
-        );
+//        newProduit = productService.addProduct(newProduit);
+//        productService.getProducts().forEach(
+//                product -> System.out.println(product.getName())
+//        );
 
-        commentaireService.getCommentaires().forEach(
-                commentaire -> System.out.println(commentaire.getContent())
-        );
-        Commentaire newCommentaire = new Commentaire();
-        newCommentaire.setContent("contenu de mon produit");
-        newCommentaire = commentaireService.addCommentaire(newCommentaire);
-        commentaireService.getCommentaires().forEach(
-                commentaire -> System.out.println(commentaire.getContent())
-        );
-    }
+        // --------------------------------------------------------------------------
+//        commentaireService.getCommentaires().forEach(
+//                commentaire -> System.out.println(commentaire.getContent())
+//        );
+//        Commentaire newCommentaire = new Commentaire();
+//        newCommentaire.setContent("contenu de mon produit");
+//        newCommentaire = commentaireService.addCommentaire(newCommentaire);
+//        commentaireService.getCommentaires().forEach(
+//                commentaire -> System.out.println(commentaire.getContent())
+//        );
+//        newProduit.addCommentaire(newCommentaire);
+//        newProduit.getCommentaires().forEach(
+//                commentaire -> System.out.println(commentaire.getContent()
+//        ));
+
+        // Mise à jour du nom du produit ayantt lId 1 au niveau de la base de donnée
+        Product existingProduit = productService.getProductById(1).get();
+        System.out.println(existingProduit.getName());
+
+        existingProduit.setName("Shampoing");
+        productService.addProduct(existingProduit);
+
+        existingProduit = productService.getProductById(1).get();
+        System.out.println(existingProduit.getName());
+
+;    }
 
 }
