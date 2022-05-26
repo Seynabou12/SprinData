@@ -24,9 +24,9 @@ public class Product {
 
     @OneToMany(
 
-            mappedBy = "produits",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
 
     @JoinColumn(name = "produit_id")

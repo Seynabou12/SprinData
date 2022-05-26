@@ -108,16 +108,22 @@ public class TesteApplication implements CommandLineRunner {
 //                commentaire -> System.out.println(commentaire.getContent()
 //        ));
 
+        // ----------------------------------------------------------------------------------------------------
         // Mise à jour du nom du produit ayantt lId 1 au niveau de la base de donnée
-        Product existingProduit = productService.getProductById(1).get();
-        System.out.println(existingProduit.getName());
+//        Product existingProduit = productService.getProductById(1).get();
+//        System.out.println(existingProduit.getName());
+//
+//        existingProduit.setName("Shampoing");
+//        productService.addProduct(existingProduit);
+//
+//        existingProduit = productService.getProductById(1).get();
+//        System.out.println(existingProduit.getName());
 
-        existingProduit.setName("Shampoing");
-        productService.addProduct(existingProduit);
+        // ----------------------------------------------------------------------------------------
+        // Affichage l'id des produits dont le nome du produit est savon
+        Iterable<Product> searchResults = productService.getProductsByName("Créme");
+        searchResults.forEach(product -> System.out.println(product.getProductId()));
 
-        existingProduit = productService.getProductById(1).get();
-        System.out.println(existingProduit.getName());
-
-;    }
+    }
 
 }

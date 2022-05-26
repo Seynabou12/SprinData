@@ -30,4 +30,9 @@ public class ProductService {
     public void deleteProduitById(Integer id){
         productRepository.deleteById(id);
     }
+
+    // Ajout dd méthode pour
+    public Iterable<Product> getProductsByName(String name){
+        return productRepository.findAByName(name);
+    }
 }
